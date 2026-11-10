@@ -31,10 +31,11 @@ $georgia = Country::code('GE');        // also 'GEO' or '268'
 $georgia->name;                        // in the app locale: 'საქართველო' (ka), 'Georgia' (en)
 $georgia->nameIn('ru');                // 'Грузия'
 $georgia->official_name;               // the ISO official name, when it has one
-$georgia->currency();                  // Mchekhashvili\Money\Currency GEL
+$georgia->currency();                  // Mchekhashvili\Money\Currency GEL; null for Antarctica
 $georgia->flag;                        // '🇬🇪'
 
 Country::query()->usingCurrency('EUR')->get();
+Country::query()->whereCode('GEO')->first();   // null when there is no such country; code() throws
 ```
 
 Point your own models at it:
